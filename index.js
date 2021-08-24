@@ -14,7 +14,7 @@ server.listen(port, () => {
 // Script to delete and install packages
 const fs = require('fs');
 var npm = require('npm');
-const Totalcount = 5;
+const Totalcount = 10;
 var count = 0;
 
 deleteExistingPackage();

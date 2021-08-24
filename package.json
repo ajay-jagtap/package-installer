@@ -1,5 +1,5 @@
 {
-  "name": "node-hello",
+  "name": "package-installer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,17 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnpapa/node-hello.git"
+    "url": "https://github.com/ajay-jagtap/package-installer.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/johnpapa/node-hello/issues"
+    "url": "https://github.com/ajay-jagtap/package-installer/issues"
   },
-  "homepage": "https://github.com/johnpapa/node-hello#readme",
+  "homepage": "https://github.com/ajay-jagtap/package-installer#readme",
   "dependencies": {
-    "ngx-bs-modal": "^1.0.3",
     "npm": "^7.21.0"
   },
   "devDependency": {}

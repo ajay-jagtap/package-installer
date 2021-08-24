@@ -1,8 +1,8 @@
 # Node Hello World
 
-Simple node.js app that servers "hello world"
+Package Installer Script
 
-Great for testing simple deployments to the cloud
+Installs and Delete Package multiple times based on user Input
 
 ## Run It
 
