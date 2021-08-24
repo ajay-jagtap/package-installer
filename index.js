@@ -23,22 +23,24 @@ function deleteExistingPackage() {
   count++;
   if (count < Totalcount) {
     setTimeout(() => {
-      console.log('Deleting existing Package');
-      fs.rm('./node_modules/ngx-bs-modal', { recursive: true }, () => console.log('done'));
+      console.log('Deleting Existing Package');
+      fs.rm('./node_modules/ngx-bs-modal', { recursive: true }, () => console.log('Deleted Existing Package'));
       setTimeout(() => {
         installPackage();
       }, 5000);
     }, 5000);
+  } else {
+    console.log('Script completed ' + Totalcount + ' Times')
   }
 }
 
 function installPackage() {
   npm.load(function (err) {
-    console.log('Installing new Package');
+    console.log('Installing New Package');
     // install module ngx-bs-modal
     npm.commands.install(['ngx-bs-modal'], function (er, data) {
       // log errors or data
-      console.log('Installed Package', er, data);
+      console.log('Installed New Package');
       deleteExistingPackage();
     });
 
