@@ -18,23 +18,27 @@ const packages = ['ngx-bs-modal'];
 const Totalcount = 100;
 var count = 0;
 
-deleteAndInstallPackages();
+runScript();
 
-function deleteAndInstallPackages() {
+function runScript() {
   count++;
   console.log('Count: ' + count);
   if (count < Totalcount) {
     deletePackagesFromNodeModules();
-    installPackagesFromNPM();
   } else {
     console.log('Script completed ' + Totalcount + ' Times')
   }
 }
 
 function deletePackagesFromNodeModules() {
-  packages.forEach(package => {
+  packages.forEach((package, index) => {
     console.log(`Deleting Existing Package: ${package}`);
-    fs.rm(`./node_modules/${package}`, { recursive: true }, () => console.log(`Deleted Existing Package: ${package}`));
+    fs.rm(`./node_modules/${package}`, { recursive: true }, () => {
+      console.log(`Deleted Existing Package: ${package}`)
+      if (index == packages.length - 1) {
+        installPackagesFromNPM();
+      }
+    });
   })
 }
 
@@ -45,7 +49,7 @@ function installPackagesFromNPM() {
     npm.commands.install(packages, function (er, data) {
       // log errors or data
       console.log('Installed New Packages', er, data);
-      deleteAndInstallPackages();
+      runScript();
     });
 
     npm.on('log', function (message) {
