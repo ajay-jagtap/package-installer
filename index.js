@@ -14,34 +14,38 @@ server.listen(port, () => {
 // Script to delete and install packages
 const fs = require('fs');
 var npm = require('npm');
-const Totalcount = 10;
+const packages = ['ngx-bs-modal'];
+const Totalcount = 100;
 var count = 0;
 
-deleteExistingPackage();
+deleteAndInstallPackages();
 
-function deleteExistingPackage() {
+function deleteAndInstallPackages() {
   count++;
+  console.log('Count: ' + count);
   if (count < Totalcount) {
-    setTimeout(() => {
-      console.log('Deleting Existing Package');
-      fs.rm('./node_modules/ngx-bs-modal', { recursive: true }, () => console.log('Deleted Existing Package'));
-      setTimeout(() => {
-        installPackage();
-      }, 5000);
-    }, 5000);
+    deletePackagesFromNodeModules();
+    installPackagesFromNPM();
   } else {
     console.log('Script completed ' + Totalcount + ' Times')
   }
 }
 
-function installPackage() {
+function deletePackagesFromNodeModules() {
+  packages.forEach(package => {
+    console.log(`Deleting Existing Package: ${package}`);
+    fs.rm(`./node_modules/${package}`, { recursive: true }, () => console.log(`Deleted Existing Package: ${package}`));
+  })
+}
+
+function installPackagesFromNPM() {
   npm.load(function (err) {
-    console.log('Installing New Package');
-    // install module ngx-bs-modal
-    npm.commands.install(['ngx-bs-modal'], function (er, data) {
+    console.log('Installing New Packages');
+    // install Package
+    npm.commands.install(packages, function (er, data) {
       // log errors or data
-      console.log('Installed New Package');
-      deleteExistingPackage();
+      console.log('Installed New Packages', er, data);
+      deleteAndInstallPackages();
     });
 
     npm.on('log', function (message) {
