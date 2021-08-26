@@ -1,7 +1,7 @@
 {
   "name": "package-installer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Package Installer Node Script",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -11,7 +11,7 @@
     "url": "https://github.com/ajay-jagtap/package-installer.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ajay Jagtap",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ajay-jagtap/package-installer/issues"
